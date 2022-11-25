@@ -10,6 +10,7 @@ export const TopPage: FC = () => {
       <Heading>トップページ</Heading>
 
       <ButtonWrapper>
+        <LinkButton href="/image-selector">画像切り替え</LinkButton>
         <LinkButton href="/calculator">電卓</LinkButton>
         <LinkButton href="/timer">タイマー</LinkButton>
       </ButtonWrapper>
