@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react'
 import styled from 'styled-components'
 
+import { Center } from '../components/Box'
 import { Heading } from '../components/Heading'
 
 const imageList = [
@@ -36,10 +37,6 @@ export const ImageSelectorPage: FC = () => {
     </>
   )
 }
-
-const Center = styled.div`
-  text-align: center;
-`
 
 const SelectedImage = styled.img`
   width: 640px;

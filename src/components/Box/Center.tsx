@@ -5,10 +5,10 @@ type Props = {
   children: ReactNode
 }
 
-export const Heading: FC<Props> = ({ children }) => {
-  return <TopHeading>{children}</TopHeading>
+export const Center: FC<Props> = ({ children }) => {
+  return <CenterBox>{children}</CenterBox>
 }
 
-const TopHeading = styled.h1`
+const CenterBox = styled.div`
   text-align: center;
 `

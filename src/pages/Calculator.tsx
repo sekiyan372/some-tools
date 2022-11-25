@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react'
 import styled from 'styled-components'
 
+import { Center } from '../components/Box'
 import { CalculatorButton, OperatorButton } from '../components/Button'
 import { Heading } from '../components/Heading'
 
@@ -154,10 +155,6 @@ export const CalculatorPage: FC = () => {
     </>
   )
 }
-
-const Center = styled.div`
-  text-align: center;
-`
 
 const Result = styled.div`
   width: 280px;

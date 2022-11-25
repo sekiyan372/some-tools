@@ -1,10 +1,10 @@
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 type Props = {
   href: string
-  children: React.ReactNode
+  children: ReactNode
 }
 
 export const LinkButton: FC<Props> = ({ href, children }) => {
