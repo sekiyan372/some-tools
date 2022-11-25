@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useCallback, useState } from 'react'
 import styled from 'styled-components'
 
 import { Center } from '../components/Box'
@@ -13,7 +13,7 @@ export const CalculatorPage: FC = () => {
   const [operator, setOperator] = useState<Operator | null>(null)
   const [isResult, setIsResult] = useState<boolean>(false)
 
-  const calculate = () => {
+  const calculate = useCallback(() => {
     const firstNum = firstTerm === '' ? 0 : parseFloat(firstTerm)
     const secondNum = secondTerm === '' ? 0 : parseFloat(secondTerm)
     switch (operator) {
@@ -28,53 +28,59 @@ export const CalculatorPage: FC = () => {
       default:
         return 0
     }
-  }
+  }, [firstTerm, secondTerm])
 
-  const execute = () => {
+  const execute = useCallback(() => {
     setFirstTerm(calculate().toString())
     setSecondTerm('')
     setOperator(null)
     setIsResult(true)
-  }
+  }, [])
 
-  const reset = () => {
+  const reset = useCallback(() => {
     setFirstTerm('')
     setSecondTerm('')
     setOperator(null)
-  }
+  }, [])
 
-  const handleOperator = (op: Operator) => {
-    //新規演算子
-    if (!operator) {
-      setOperator(op)
-    }
-    //演算子の解除
-    if (operator === op) {
-      setOperator(null)
-    }
-    //演算子の更新
-    if (operator && operator !== op && secondTerm === '') {
-      setOperator(op)
-    }
-    //演算を実行して次の演算子をセット
-    if (operator && operator !== op && secondTerm !== '') {
-      setFirstTerm(calculate().toString())
-      setSecondTerm('')
-      setOperator(op)
-    }
-  }
+  const handleOperator = useCallback(
+    (op: Operator) => {
+      //新規演算子
+      if (!operator) {
+        setOperator(op)
+      }
+      //演算子の解除
+      if (operator === op) {
+        setOperator(null)
+      }
+      //演算子の更新
+      if (operator && operator !== op && secondTerm === '') {
+        setOperator(op)
+      }
+      //演算を実行して次の演算子をセット
+      if (operator && operator !== op && secondTerm !== '') {
+        setFirstTerm(calculate().toString())
+        setSecondTerm('')
+        setOperator(op)
+      }
+    },
+    [operator, secondTerm]
+  )
 
-  const handleNumber = (num: number) => {
-    if (operator) {
-      if (num === 0 && secondTerm === '') return
-      setSecondTerm(secondTerm + num.toString())
-    } else {
-      if (num === 0 && firstTerm === '') return
-      if (!isResult) return setFirstTerm(firstTerm + num.toString())
-      setFirstTerm(num.toString())
-      setIsResult(false)
-    }
-  }
+  const handleNumber = useCallback(
+    (num: number) => {
+      if (operator) {
+        if (num === 0 && secondTerm === '') return
+        setSecondTerm(secondTerm + num.toString())
+      } else {
+        if (num === 0 && firstTerm === '') return
+        if (!isResult) return setFirstTerm(firstTerm + num.toString())
+        setFirstTerm(num.toString())
+        setIsResult(false)
+      }
+    },
+    [operator, firstTerm, secondTerm]
+  )
 
   return (
     <>
