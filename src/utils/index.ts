@@ -1,1 +1,1 @@
-export { timeFormatter } from './timeFormatter'
+export { stopWatchFormatter, timerFormatter, sumTime } from './timeFormatter'

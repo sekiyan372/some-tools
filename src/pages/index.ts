@@ -1,4 +1,5 @@
 export { TopPage } from './Top'
+export { ImageSelectorPage } from './ImageSelector'
 export { CalculatorPage } from './Calculator'
 export { StopWatchPage } from './StopWatch'
-export { ImageSelectorPage } from './ImageSelector'
+export { TimerPage } from './Timer'

@@ -1,10 +1,10 @@
 import React, { FC, useCallback, useRef, useState } from 'react'
-import styled from 'styled-components'
 
 import { Center } from '../components/Box'
 import { TimerButton } from '../components/Button'
 import { Heading } from '../components/Heading'
-import { timeFormatter } from '../utils'
+import { Time } from '../components/Text'
+import { stopWatchFormatter } from '../utils'
 
 export const StopWatchPage: FC = () => {
   const [time, setTime] = useState<number>(0)
@@ -35,7 +35,7 @@ export const StopWatchPage: FC = () => {
     <>
       <Heading>ストップウォッチ</Heading>
 
-      <Time>{timeFormatter(time)}</Time>
+      <Time>{stopWatchFormatter(time)}</Time>
 
       <Center>
         <TimerButton onClick={start}>start</TimerButton>
@@ -45,8 +45,3 @@ export const StopWatchPage: FC = () => {
     </>
   )
 }
-
-const Time = styled.p`
-  font-size: 4rem;
-  text-align: center;
-`
